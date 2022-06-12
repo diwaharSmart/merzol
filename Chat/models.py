@@ -28,9 +28,9 @@ class Message(models.Model):
     timestamp       = models.CharField(max_length=255,blank=True,null=True)
        
 
+
 class MediaFile(models.Model):
     user            = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
     file            = models.FileField(upload_to="message/file/")
-
     def __str__(self):
         return self.id
