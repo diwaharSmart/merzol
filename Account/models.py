@@ -14,7 +14,7 @@ class User(AbstractUser):
     mobile_number  = models.CharField(max_length=255,blank=True,null=True,unique=True)
     user_id        = models.CharField(default=uuid.uuid4,max_length=255,unique=True)
     country_code   = models.CharField(max_length=255,blank=True,null=True)
-    profile        = models.ImageField(upload_to = "user/profile/images/",blank=True,null=true,default='user/profile/images/profile.png')
+    profile        = models.ImageField(upload_to = "user/profile/images/",blank=True,null=True,default='user/profile/images/profile.png')
     online         = models.BooleanField(default=False)
     last_seen      = models.CharField(max_length=255,blank=True,null=True)
 
