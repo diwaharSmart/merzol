@@ -23,7 +23,7 @@ class UserView(APIView):
             token , created = Token.objects.get_or_create(user=user)
             resp = dict()
             resp["name"] = user.first_name
-            resp["profile_image"] = user.profile
+            resp["profile_image"] = user.profile.url
             resp["user_id"] = user.user_id
             resp["status"] = user.status
             resp["country_code"] = user.country_code
@@ -43,7 +43,7 @@ class UserView(APIView):
         token , created = Token.objects.get_or_create(user=user)
         resp = dict()
         resp["name"] = user.first_name
-        resp["profile_image"] = user.profile
+        resp["profile_image"] = user.profile.url
         resp["user_id"] = user.user_id
         resp["status"] = user.status
         resp["country_code"] = user.country_code
