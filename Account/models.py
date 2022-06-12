@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 
-from sqlalchemy import null, true
+
 # Create your models here.
 
 class User(AbstractUser):

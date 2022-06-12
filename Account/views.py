@@ -7,7 +7,6 @@ from rest_framework.response import Response
 import random
 # from account.models import DeviceVerification,User
 from rest_framework.authtoken.models import Token
-from django.core.files.images import ImageFile
 from Account.models import User
 
 
