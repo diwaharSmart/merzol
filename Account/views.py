@@ -1,13 +1,9 @@
-from ipaddress import ip_address
-from django.contrib.auth.hashers import make_password
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
 import random
 # from account.models import DeviceVerification,User
 from rest_framework.authtoken.models import Token
-from yaml import serialize
 from Account.models import User
 from Account.serializer import ContactSerializer
 
