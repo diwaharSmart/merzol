@@ -7,7 +7,9 @@ from rest_framework.response import Response
 import random
 # from account.models import DeviceVerification,User
 from rest_framework.authtoken.models import Token
+from yaml import serialize
 from Account.models import User
+from Account.serializer import ContactSerializer
 
 
 
@@ -53,3 +55,14 @@ class UserView(APIView):
 
 
 
+
+
+class ContactView(APIView):
+    
+    def post(self,request,format=None):
+        import json
+        data = request.data
+        contacts = json.loads(data["contacts"])
+        users = User.objects.filter(username__in=contacts)
+        serializer = ContactSerializer(users,many=True)
+        return Response(serializer.data,status=status.HTTP_200_OK)
