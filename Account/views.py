@@ -16,7 +16,7 @@ class UserView(APIView):
     def get(self,request,format=None):
         mobile_number  = self.request.query_params.get('mobile_number',None)
         try:
-            user = User.objects.get(username=mobile_number)
+            user = User.objects.get(username="+"+str(mobile_number))
             token , created = Token.objects.get_or_create(user=user)
             resp = dict()
             resp["name"] = user.first_name
