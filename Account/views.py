@@ -15,19 +15,18 @@ class UserView(APIView):
 
     def get(self,request,format=None):
         mobile_number  = self.request.query_params.get('mobile_number',None)
-        try:
-            user = User.objects.get(username="+"+str(mobile_number))
-            token , created = Token.objects.get_or_create(user=user)
-            resp = dict()
-            resp["name"] = user.first_name
-            resp["profile_image"] = user.profile.url
-            resp["user_id"] = user.user_id
-            resp["status"] = user.status
-            resp["country_code"] = user.country_code
-            resp["token"] = token.key
-            return Response(resp,status=status.HTTP_200_OK)
-        except:
-            return Response({},status=status.HTTP_204_NO_CONTENT)
+     
+        user = User.objects.get(username="+"+str(mobile_number)[1:])
+        token , created = Token.objects.get_or_create(user=user)
+        resp = dict()
+        resp["name"] = user.first_name
+        resp["profile_image"] = user.profile.url
+        resp["user_id"] = user.user_id
+        resp["status"] = user.status
+        resp["country_code"] = user.country_code
+        resp["token"] = token.key
+        return Response(resp,status=status.HTTP_200_OK)
+        
 
 
 
