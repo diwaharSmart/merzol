@@ -56,9 +56,9 @@ class UserView(APIView):
 class ContactView(APIView):
     
     def post(self,request,format=None):
-        import json
+       
         data = request.data
-        contacts = json.loads(data["contacts"])
+        contacts = data["contacts"]
         users = User.objects.filter(username__in=contacts)
         serializer = ContactSerializer(users,many=True)
         return Response(serializer.data,status=status.HTTP_200_OK)
