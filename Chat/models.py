@@ -18,7 +18,8 @@ ATTACHMENT_TYPE = (
 
 class Message(models.Model):
     room            = models.ForeignKey(Room,on_delete=models.CASCADE,blank=True,null=True)
-    from_user       = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,blank=True,null=True)
+    from_user       = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,blank=True,null=True,related_name="from_user")
+    to_user         = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,blank=True,null=True,related_name="to_user")
     text            = models.TextField(max_length=3000,blank=True,null=True)
     reply           = models.CharField(max_length=255,blank=True,null=True)
     attachment_type = models.CharField(max_length=255,choices=ATTACHMENT_TYPE,default="text")

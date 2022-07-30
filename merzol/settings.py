@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'Account',
     'Room',
     'Chat',
+    'Meeting',
 
     'channels',
     'socket_server',
