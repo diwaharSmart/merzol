@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 from Account.models import User
 from Account.serializer import ContactSerializer
 from Meeting.models import MEETING, PARTICIPANT
-from Meeting.serializer import MeetingSerializer
+from Meeting.serializer import MeetingSerializer, ParticipantSerializer
 # Create your views here.
 
 
@@ -27,7 +27,7 @@ class MeetingtView(APIView):
             m = MEETING.objects.get(id=i.id)
             meeting         = MeetingSerializer(m).data
             for j in m.participants.all():
-                contacts.append(ContactSerializer(j.user).data)
+                contacts.append(ParticipantSerializer(j).data)
 
             serializer_data["meeting"]=meeting
             serializer_data["participants"]=contacts
@@ -53,7 +53,7 @@ class MeetingtView(APIView):
                 admin = i["admin"],
                 recieved = i["recieved"],
             )
-            contacts.append(ContactSerializer( User.objects.get(user_id=i["user_id"])).data)
+            contacts.append(ParticipantSerializer(participant).data)
 
         
 
